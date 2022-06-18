@@ -37,6 +37,7 @@ public class FileInputDemo {
     }
 
     public static void main(String[] args) {
-        readFile("resource/onemore/xyz.txt");
+        String fileName = "resource/onemore/xyz.txt"
+        readFile(fileName);
     }
 }
