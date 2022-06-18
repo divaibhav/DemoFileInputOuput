@@ -4,9 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class FileInputDemo {
-    public static void readFile(String fileName){
+    public static void readFile(String fileName) {
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream(fileName);//READS FILES IN BYTES
@@ -27,17 +28,32 @@ public class FileInputDemo {
             for (byte b1 : b) {
                 System.out.print((char)b1);
             }
+            Scanner scanner = new Scanner(System.in);
+            int number;
+            do {
+                number = scanner.nextInt();
+            }while (number < 1000);
         }
         catch (FileNotFoundException e){
+            System.out.println("file not found \n\n\n\n\n");
             e.printStackTrace();
         }
         catch (IOException e){
             e.printStackTrace();
         }
+        finally {
+            try {
+                fileInputStream.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     public static void main(String[] args) {
         String fileName = "resource/onemore/xyz.txt";
         readFile(fileName);
+
     }
 }
